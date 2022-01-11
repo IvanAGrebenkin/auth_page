@@ -7,9 +7,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+    // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const inputFileBorderStyle = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(36.0)),
+      borderSide: BorderSide(
+        color: Color(0xffECEFF1),
+        width: 2.0,
+      ),
+    );
+
+    const linkTextStyle = TextStyle(
+      fontSize:16,
+      fontWeight: FontWeight.bold,
+      color: Color(0xff0079D0),
+    );
+
     return MaterialApp(
       home: Scaffold(body: 
         SizedBox(
@@ -21,21 +35,30 @@ class MyApp extends StatelessWidget {
                 child: Placeholder(),
             ),
             const SizedBox(width:103, height:18.58,),
-            const Text('Введите логин в виде 10 цифр номера телефона'),
+            const Text('Введите логин в виде 10 цифр номера телефона',
+                style: TextStyle(
+                    fontSize:16,
+                    color: Color.fromRGBO(0, 0, 0, 0.6),
+                ),
+            ),
             const SizedBox(width:103, height:20,),
-            const SizedBox(width:244,
+            const SizedBox(width:244, height: 34,
               child: TextField(
                 decoration: InputDecoration(
+                  enabledBorder: inputFileBorderStyle,
+                  focusedBorder: inputFileBorderStyle,
                   filled: true,
                   fillColor: Color(0xffECEFF1),
                   labelText: 'Телефон',),
               ),
             ),
             const SizedBox(width:103, height:20,),
-            const SizedBox(width:244,
+            const SizedBox(width:244, height: 34,
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
+                  enabledBorder: inputFileBorderStyle,
+                  focusedBorder: inputFileBorderStyle,
                   filled: true,
                   fillColor: Color(0xffECEFF1),
                   labelText: 'Пароль',
@@ -47,21 +70,29 @@ class MyApp extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 child: const Text('Войти'),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xff0079D0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(36.0)),
+                ),
+
               ),
             ),
-            const SizedBox(width:103, height:55,),
-            SizedBox(width:94, height:16,
-              child: InkWell(
-                child: const Text('Регистрация'),
+            const SizedBox(width:103, height:68,),
+            InkWell(
+              child: const Text(
+                'Регистрация',
+                style: linkTextStyle,
+                ),
                 onTap: () {},
-              ),
             ),
             const SizedBox(width:103, height:19,),
-            SizedBox(width:122, height:16,
-              child: InkWell(
-                child: const Text('Забыли пароль?'),
-                onTap: () {},
+            InkWell(
+              child: const Text(
+                'Забыли пароль?',
+                style: linkTextStyle,
               ),
+              onTap: () {},
             ),
             ],),
           ),
